@@ -143,3 +143,29 @@ const writeToFile = (fileName, data) => {
     });
 };
 
+
+// initialize app
+const init = () => {
+    return inquirer.prompt(questions);
+};
+
+// function call to initialize app
+init()
+    .then(readmeData => {
+    return promptScreenshot(readmeData);
+    })
+    .then(data => {
+        console.log(data);
+        return generateMarkdown(data);
+    })
+    .then(markdown => {
+        return writeToFile(markdown);
+    })
+    .then(writeFileResponse => {
+        console.log(writeFileResponse.message);
+    })
+    .catch(err => {
+        console.log(err)
+    });
+
+    
