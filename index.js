@@ -92,3 +92,54 @@ const questions = [
         }
     }
 ];
+
+
+// prompt questions to add screenshot(s) into README
+const promptScreenshot = readmeData => {
+	if (!readmeData.screenshots) {
+		readmeData.screenshots = [];
+	}
+	console.log(`
+===============================
+Add a New Screenshot (OPTIONAL)
+===============================
+	`);
+	return inquirer.prompt([
+		{
+			type: 'input',
+			name: 'img',
+			message: 'Create an `assets/images` folder & upload your screenshot file in it. Then provide the image file name. (OPTIONAL)',
+		},
+        {
+            type: 'confirm',
+            name: 'confirmAddScreenshot',
+            message: 'Would you like to add another screenshot?',
+            default: false
+        }
+    ])
+    .then(screenshotData => {
+        readmeData.screenshots.push(screenshotData);
+        if (screenshotData.confirmAddScreenshot) {
+            return promptScreenshot(readmeData);
+        } else {
+            return readmeData;
+        }
+    });
+};
+
+// function to write README file
+const writeToFile = (fileName, data) => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./dist/README.md', fileName, err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            resolve({
+                ok: true,
+                message: 'Success! A new README.md file has been created!'
+            });
+        });
+    });
+};
+
