@@ -1,54 +1,49 @@
-// packages needed for this application
-const inquirer = require('inquirer');
-const fs = require('fs');
-const generateMarkdown = require('./generateMarkdown.js');
 
-// array of questions for user input
 const questions = [
+{
+type: 'input',
+name: 'title',
+message: 'What is the name of your project? (Required)',
+validate: titleInput => {
+if (titleInput) {
+  return true;
+ } else {
+console.log('Please enter a project title');
+ return false;
+  }
+ }
+},
     {
-        type: 'input',
-        name: 'title',
-        message: 'What is the name of your project? (Required)',
-        validate: titleInput => {
-            if (titleInput) {
-                return true;
-            } else {
-                console.log('Please enter a project title');
-                return false;
-            }
-        }
-    },
-    {
-        type: 'input',
-        name: 'description',
-        message: 'Provide a description of your project. (Required)',
-        validate: descInput => {
-            if (descInput) {
-                return true;
-            } else {
-                console.log('Please enter a description for your project');
-                return false;
-            }
-        }
-    },
-    {
-        type: 'input',
-        name: 'installation',
-        message: 'Provide installation instructions for your project.'
-    },
-    {
-        type: 'input',
-        name: 'usage',
-        message: 'Provide instructions & examples for use. Option to add screenshots will be shown upon completion of this set of questions. (Required)',
-        validate: usageInput => {
-            if (usageInput) {
-                return true;
-            } else {
-                console.log('Please enter any instructions for use');
-                return false;
-            }
-        }
-    },
+type: 'input',
+name: 'description',
+message: 'Provide a description of your project. (Required)',
+validate: descInput => {
+ if (descInput) {
+ return true;
+ } else { 
+     console.log('Please enter a description for your project');
+return false;
+ }
+}
+},
+ {
+type: 'input',
+name: 'installation',
+message: 'Provide installation instructions for your project.'
+},
+{
+type: 'input',
+name: 'usage',
+message: 'Provide instructions & examples for use. Option to add screenshots will be shown upon completion of this set of questions. (Required)',
+ validate: usageInput => {
+ if (usageInput) {
+   return true;
+} else {
+console.log('Please enter any instructions for use');
+return false;
+ }
+}
+},
     {
         type: 'input',
         name: 'contribute',
@@ -128,7 +123,7 @@ Add a New Screenshot (Optional)
     });
 };
 
-// function to write README file
+// function for README file
 const writeToFile = (fileName, data) => {
     return new Promise((resolve, reject) => {
         fs.writeFile('./README', fileName, err => {
@@ -169,3 +164,8 @@ init()
         console.log(err)
     });
 
+
+    const inquirer = require('inquirer');
+    const fs = require('fs');
+    const generateMarkdown = require('./generateMarkdown.js');
+    
