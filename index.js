@@ -1,4 +1,8 @@
 
+    const inquirer = require('inquirer');
+    const fs = require('fs');
+    const generateMarkdown = require('./generateMarkdown.js');
+    
 const questions = [
 {
 type: 'input',
@@ -165,7 +169,3 @@ init()
     });
 
 
-    const inquirer = require('inquirer');
-    const fs = require('fs');
-    const generateMarkdown = require('./generateMarkdown.js');
-    
