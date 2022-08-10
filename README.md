@@ -17,4 +17,6 @@ Now just open your terminal once again and run the next command line (node index
 
 # How this APP works
 
-I am providing you a walkthrough video which explains you how this README generator looks like. [HERE]()
+I am providing you a walkthrough video which explains you how this README generator looks like. [HERE](https://youtu.be/GgPD45ge2HU)
+
+Thank you very much!.
