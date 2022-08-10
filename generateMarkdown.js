@@ -146,11 +146,12 @@ ${generateContribute(data.contribute)}
 ${generateTest(data.tests)}
 
 ## License
+
 ${renderLicenseSection(data.license)}
 
 ## Questions
-For any questions about this repository, please contact me at [${data.email}](mailto:${data.email}).
-To view more of my works, please visit my GitHub: [${data.github}](https://github.com/${data.github}).
+if you have gotten any questions about this repository, please contact me at [${data.email}](mailto:${data.email}).
+To view more, please visit my GitHub: [${data.github}](https://github.com/${data.github}).
   `;
 };
 

@@ -8,12 +8,12 @@ const questions = [
     {
         type: 'input',
         name: 'title',
-        message: 'What is the name of your project? (REQUIRED)',
+        message: 'What is the name of your project? (Required)',
         validate: titleInput => {
             if (titleInput) {
                 return true;
             } else {
-                console.log('Please enter a project title!');
+                console.log('Please enter a project title');
                 return false;
             }
         }
@@ -21,12 +21,12 @@ const questions = [
     {
         type: 'input',
         name: 'description',
-        message: 'Provide a description of your project. (REQUIRED)',
+        message: 'Provide a description of your project. (Required)',
         validate: descInput => {
             if (descInput) {
                 return true;
             } else {
-                console.log('Please enter a description for your project!');
+                console.log('Please enter a description for your project');
                 return false;
             }
         }
@@ -34,17 +34,17 @@ const questions = [
     {
         type: 'input',
         name: 'installation',
-        message: 'Provide installation intructions for your project.'
+        message: 'Provide installation instructions for your project.'
     },
     {
         type: 'input',
         name: 'usage',
-        message: 'Provide instructions & examples for use. Option to add screenshots will be shown upon completion of this set of questions. (REQUIRED)',
+        message: 'Provide instructions & examples for use. Option to add screenshots will be shown upon completion of this set of questions. (Required)',
         validate: usageInput => {
             if (usageInput) {
                 return true;
             } else {
-                console.log('Please enter any instructions for use!');
+                console.log('Please enter any instructions for use');
                 return false;
             }
         }
@@ -62,13 +62,13 @@ const questions = [
     {
         type: 'checkbox',
         name: 'license',
-        message: 'Please select a license to use for your project. (CHOOSE 1)',
-        choices: ['Apache 2.0', 'GNU GPL v3', 'MIT', 'No License', 'Skip']
+        message: 'Please select a license to use for your project. (choose only 1)',
+        choices: ['GNU GPL v3', 'MIT', 'No License', 'Skip']
     },
     {
         type: 'input',
         name: 'github',
-        message: 'Enter your GitHub Username. (REQUIRED)',
+        message: 'Enter your GitHub Username. (Required)',
         validate: githubInput => {
             if (githubInput) {
                 return true;
@@ -94,15 +94,16 @@ const questions = [
 ];
 
 
-// prompt questions to add screenshot(s) into README
+// prompt questions to add screenshot
 const promptScreenshot = readmeData => {
 	if (!readmeData.screenshots) {
 		readmeData.screenshots = [];
 	}
 	console.log(`
-===============================
-Add a New Screenshot (OPTIONAL)
-===============================
+
+
+Add a New Screenshot (Optional)
+
 	`);
 	return inquirer.prompt([
 		{
